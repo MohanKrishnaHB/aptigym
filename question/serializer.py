@@ -2,25 +2,25 @@ from rest_framework import serializers
 from .models import CategoryLevel1, CategoryLevel2, Question, Options
 
 
-class CategoryLevel1Serializer(serializers.ModelSeializer):
+class CategoryLevel1Serializer(serializers.ModelSerializer):
     class Meta:
         model = CategoryLevel1
         fields = "__all__"
 
 
-class CategoryLevel2Serializer(serializers.ModelSeializer):
+class CategoryLevel2Serializer(serializers.ModelSerializer):
     class Meta:
         model = CategoryLevel2
         fields = "__all__"
 
 
-class OptionsSerializer(serializers.ModelSeializer):
+class OptionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Options
         fields = ['id', 'option', 'has_image', 'image', 'is_true']
 
 
-class QuestionSerializer(serializers.ModelSeializer):
+class QuestionSerializer(serializers.ModelSerializer):
     options = OptionsSerializer(many=True)
 
     class Meta:
