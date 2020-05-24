@@ -19,7 +19,7 @@ class Category2ViewSet(viewsets.ModelViewSet):
     ]
 
 
-class OptionsSerializer(viewsets.ModelViewSet):
+class OptionsViewSet(viewsets.ModelViewSet):
     queryset = Options.objects.all()
     serializer_class = OptionsSerializer
     permission_class = [
@@ -27,7 +27,7 @@ class OptionsSerializer(viewsets.ModelViewSet):
     ]
 
 
-class QuestionSerializer(viewsets.ModelViewSet):
+class QuestionViewSet(viewsets.ModelViewSet):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
     permission_class = [
