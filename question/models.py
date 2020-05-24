@@ -39,11 +39,11 @@ class Question(models.Model):
     question = models.TextField()
     has_question_image = models.BooleanField(default=False)
     question_image = models.ImageField(
-        upload_to='uploads/images/question/', null=True, blank=True)
+        upload_to='images/question/', null=True, blank=True)
     solution = models.TextField()
     has_solution_image = models.BooleanField(default=False)
     solution_image = models.ImageField(
-        upload_to='uploads/images/solution/', null=True, blank=True)
+        upload_to='images/solution/', null=True, blank=True)
     category = models.ForeignKey(
         CategoryLevel2, default=0, on_delete=models.SET(create_default_category2), related_name="questions")
     created_on = models.DateField(auto_now=True)
@@ -58,7 +58,7 @@ class Options(models.Model):
     option = models.CharField(max_length=100)
     has_image = models.BooleanField(default=False)
     image = models.ImageField(
-        upload_to='uploads/images/options/', null=True, blank=True)
+        upload_to='images/options/', null=True, blank=True)
     is_true = models.BooleanField(default=False)
 
     class Meta:
