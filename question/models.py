@@ -61,5 +61,8 @@ class Options(models.Model):
         upload_to='uploads/images/options/', null=True, blank=True)
     is_true = models.BooleanField(default=False)
 
+    class Meta:
+        unique_together = ['question', 'option']
+
     def __str__(self):
         return "question {} | option {}".format(self.question.id, self.id)
