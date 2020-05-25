@@ -9,7 +9,7 @@ class TestSetializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class TestPartitianSerializer(serializers.ModelSerializer):
+class TestPartitionSerializer(serializers.ModelSerializer):
     class Meta:
         model = TestPartition
         fields = "__all__"
@@ -29,7 +29,7 @@ class TestQuestionsReadOnlySerializer(serializers.ModelSerializer):
         fields = ['questions']
 
 
-class TestPartitianReadOnlySerializer(serializers.ModelSerializer):
+class TestPartitionReadOnlySerializer(serializers.ModelSerializer):
     questions = TestQuestionsReadOnlySerializer(many=True, read_only=True)
 
     class Meta:
@@ -46,4 +46,10 @@ class StudentTestSerializer(serializers.ModelSerializer):
 class StudentQuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentQuestion
+        fields = '__all__'
+
+
+class StudentQuestionOptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StudentQuestionOption
         fields = '__all__'

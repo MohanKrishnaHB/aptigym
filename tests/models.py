@@ -1,6 +1,6 @@
 from django.db import models
 from student.models import Student
-from question.models import Question
+from question.models import Question, Options
 
 
 class Test(models.Model):
@@ -47,3 +47,9 @@ class StudentQuestion(models.Model):
     status = models.CharField(max_length=20, default="not_attended")
     points = models.DecimalField(max_digits=3, decimal_places=2)
     duration = models.TimeField(auto_now=False, auto_now_add=False)
+
+
+class StudentQuestionOption(models.Model):
+    student_question = models.ForeignKey(
+        StudentQuestion, on_delete=models.CASCADE, related_name='option')
+    option = models.ForeignKey(Options, on_delete=models.CASCADE)
