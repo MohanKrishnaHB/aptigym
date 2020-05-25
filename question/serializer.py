@@ -14,8 +14,14 @@ class CategoryLevel2Serializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class OptionsReadOnlySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Options
+        fields = ['id', 'option', 'has_image', 'image', 'is_true']
+
+
 class QuestionReadOnlySerializer(serializers.ModelSerializer):
-    options = OptionsSerializer(many=True, read_only=True)
+    options = OptionsReadOnlySerializer(many=True, read_only=True)
 
     class Meta:
         model = Question

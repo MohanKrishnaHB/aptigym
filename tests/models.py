@@ -26,7 +26,7 @@ class TestPartition(models.Model):
 
 class TestQuestions(models.Model):
     partition = models.ForeignKey(
-        Test, on_delete=models.CASCADE, related_name="questions")
+        TestPartition, on_delete=models.CASCADE, related_name="questions")
     question = models.ForeignKey(
         Question, on_delete=models.CASCADE, related_name="partitions")
 
