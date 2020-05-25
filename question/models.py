@@ -21,7 +21,7 @@ def create_default_category1():
 class CategoryLevel2(models.Model):
     title = models.CharField(max_length=20, unique=True)
     category_level_1 = models.ForeignKey(
-        CategoryLevel1, default=0, on_delete=models.SET(create_default_category1), related_name="sub_categories")
+        CategoryLevel1, on_delete=models.SET(create_default_category1), related_name="sub_categories")
 
     def __str__(self):
         return self.title
@@ -45,7 +45,7 @@ class Question(models.Model):
     solution_image = models.ImageField(
         upload_to='images/solution/', null=True, blank=True)
     category = models.ForeignKey(
-        CategoryLevel2, default=0, on_delete=models.SET(create_default_category2), related_name="questions")
+        CategoryLevel2, on_delete=models.SET(create_default_category2), related_name="questions")
     created_on = models.DateField(auto_now=True)
 
     def __str__(self):

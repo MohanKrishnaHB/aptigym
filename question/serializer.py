@@ -17,11 +17,11 @@ class CategoryLevel2Serializer(serializers.ModelSerializer):
 class OptionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Options
-        fields = ['id', 'option', 'has_image', 'image', 'is_true']
+        fields = ['id', 'question', 'option', 'has_image', 'image', 'is_true']
 
 
 class QuestionSerializer(serializers.ModelSerializer):
-    options = OptionsSerializer(many=True)
+    options = OptionsSerializer(many=True, read_only=True)
 
     class Meta:
         model = Question
@@ -34,12 +34,5 @@ class QuestionSerializer(serializers.ModelSerializer):
             'solution',
             'has_solution_image',
             'solution_image',
-            'created_on'
+            'category'
         ]
-
-    def create(self, validated_data):
-        options = validated_data.pop('options')
-        question = Question.objects.create(**validated_data)
-        for option in options:
-            Options.objects.create(question, **option)
-        return question
