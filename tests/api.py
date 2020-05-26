@@ -27,14 +27,6 @@ class TestQuestionsViewSet(viewsets.ModelViewSet):
     ]
 
 
-class TestPartitionReadOnlyViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = TestPartition.objects.all()
-    serializer_class = TestPartitionReadOnlySerializer
-    permission_class = [
-        permissions.AllowAny
-    ]
-
-
 class StudentTestViewSet(viewsets.ModelViewSet):
     queryset = StudentTest.objects.all()
     serializer_class = StudentTestSerializer

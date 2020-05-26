@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import *
-from question.serializer import QuestionReadOnlySerializer
+from question.serializer import QuestionSerializer
 
 
 class TestSetializer(serializers.ModelSerializer):
@@ -12,29 +12,13 @@ class TestSetializer(serializers.ModelSerializer):
 class TestPartitionSerializer(serializers.ModelSerializer):
     class Meta:
         model = TestPartition
-        fields = "__all__"
+        fields = '__all__'
 
 
 class TestQuestionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = TestQuestions
-        fields = "__all__"
-
-
-class TestQuestionsReadOnlySerializer(serializers.ModelSerializer):
-    questions = QuestionReadOnlySerializer(many=True, read_only=True)
-
-    class Meta:
-        model = TestQuestions
-        fields = ['questions']
-
-
-class TestPartitionReadOnlySerializer(serializers.ModelSerializer):
-    questions = TestQuestionsReadOnlySerializer(many=True, read_only=True)
-
-    class Meta:
-        model = TestPartition
-        fields = ['title', 'description', 'questions']
+        fields = ['partition', 'question']
 
 
 class StudentTestSerializer(serializers.ModelSerializer):

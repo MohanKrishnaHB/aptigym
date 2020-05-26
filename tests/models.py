@@ -30,6 +30,9 @@ class TestQuestions(models.Model):
     question = models.ForeignKey(
         Question, on_delete=models.CASCADE, related_name="partitions")
 
+    class Meta:
+        unique_together = ['partition', 'question']
+
 
 class StudentTest(models.Model):
     student = models.ForeignKey(
