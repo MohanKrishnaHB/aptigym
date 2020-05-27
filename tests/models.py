@@ -46,10 +46,15 @@ class StudentQuestion(models.Model):
     student = models.ForeignKey(
         Student, on_delete=models.CASCADE, related_name="questions")
     question = models.ForeignKey(
-        TestQuestions, on_delete=models.CASCADE, related_name="students")
+        Question, on_delete=models.CASCADE, related_name="students")
+    partition = models.ForeignKey(
+        TestPartition, on_delete=models.CASCADE, related_name="students_attended_questions")
     status = models.CharField(max_length=20, default="not_attended")
     points = models.DecimalField(max_digits=3, decimal_places=2)
     duration = models.TimeField(auto_now=False, auto_now_add=False)
+
+    class Meta:
+        unique_together = ['partition', 'question', 'student']
 
 
 class StudentQuestionOption(models.Model):
