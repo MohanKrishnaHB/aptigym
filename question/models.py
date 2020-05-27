@@ -45,7 +45,7 @@ class Question(models.Model):
     solution_image = models.ImageField(
         upload_to='images/solution/', null=True, blank=True)
     category = models.ForeignKey(
-        CategoryLevel2, on_delete=models.SET(create_default_category2), related_name="questions")
+        CategoryLevel2, default=create_default_category2, on_delete=models.SET(create_default_category2), related_name="questions")
     created_on = models.DateField(auto_now=True)
 
     def __str__(self):
